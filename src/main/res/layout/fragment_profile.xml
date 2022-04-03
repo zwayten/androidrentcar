@@ -13,14 +13,16 @@
     <ImageView
         android:id="@+id/imageView3"
         android:layout_width="match_parent"
-        android:layout_height="272dp"
+        android:layout_height="305dp"
         android:src="@drawable/ic_account" />
 
     <TextView
         android:id="@+id/usernameProfile"
-        android:layout_width="match_parent"
-        android:layout_height="88dp"
+        android:layout_width="355dp"
+        android:layout_height="69dp"
+        android:layout_gravity="center_horizontal"
+        android:gravity="center_horizontal"
         android:text="TextView"
-        android:textSize="40sp"/>
+        android:textSize="40sp" />
 
 </LinearLayout>

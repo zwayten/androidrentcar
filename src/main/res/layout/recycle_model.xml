@@ -49,7 +49,7 @@
                     />
 
                 <ImageButton
-                    android:id="@+id/btnDelete"
+                    android:id="@+id/btnLike"
                     android:layout_width="40dp"
                     android:layout_height="wrap_content"
 

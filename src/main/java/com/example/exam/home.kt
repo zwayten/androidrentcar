@@ -19,34 +19,19 @@ class home : AppCompatActivity() {
     lateinit var favorite: Button
 
 
-    private fun changeFragment(fragment: Fragment) {
-
-
-            supportFragmentManager.beginTransaction().replace(R.id.flfragment, fragment).commit()
-
-
-    }
-
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_home)
         //supportActionBar?.hide();
 
-
+        supportFragmentManager.beginTransaction().replace(R.id.flfragment, carFragment()).commit()
         rent = findViewById(R.id.rent)
+        profile = findViewById(R.id.profile)
+        favorite = findViewById(R.id.favorites)
         rent.setOnClickListener {
-            /*
-            champList.add(Champion(champPic = R.drawable.kia_picanto, Nom = "kia picanto", dispo = "DISPONIBLE",prix = 120))
-            champList.add(Champion(champPic = R.drawable.kia_rio, Nom = "kia_rio", dispo = "DISPONIBLE",prix = 1250 ))
-            champList.add(Champion(champPic = R.drawable.polo8, Nom = "polo8", dispo = "DISPONIBLE",prix = 412440 ))
-
-            recylcerChampionAdapter = carAdapter(champList)
-            recyclerView.adapter= recylcerChampionAdapter
-            recyclerView.layoutManager= LinearLayoutManager(this, LinearLayoutManager.VERTICAL,false)
-            */
             supportFragmentManager.beginTransaction().replace(R.id.flfragment, carFragment()).commit()
         }
+        profile.setOnClickListener { supportFragmentManager.beginTransaction().replace(R.id.flfragment, profileFragment()).commit() }
 
 
 

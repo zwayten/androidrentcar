@@ -26,7 +26,9 @@ class carFragment : Fragment() {
         champList.add(Champion(champPic = R.drawable.kia_picanto, Nom = "kia picanto", dispo = "DISPONIBLE",prix = 120))
         champList.add(Champion(champPic = R.drawable.kia_rio, Nom = "kia_rio", dispo = "DISPONIBLE",prix = 1250 ))
         champList.add(Champion(champPic = R.drawable.polo8, Nom = "polo8", dispo = "DISPONIBLE",prix = 412440 ))
-
+        champList.add(Champion(champPic = R.drawable.polo8, Nom = "renault_symbol", dispo = "DISPONIBLE",prix = 519620 ))
+        champList.add(Champion(champPic = R.drawable.seat_ibiza, Nom = "seat_ibiza", dispo = "DISPONIBLE",prix = 91066 ))
+        champList.add(Champion(champPic = R.drawable.polo8, Nom = "renault_symbol", dispo = "DISPONIBLE",prix = 61033 ))
         recylcerChampionAdapter = carAdapter(champList)
         carRecyclerView.adapter = recylcerChampionAdapter
 
