@@ -7,8 +7,10 @@ import android.view.ViewGroup
 import android.widget.ImageButton
 import android.widget.ImageView
 import android.widget.TextView
+import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import com.example.exam.AppDataBase
+import java.lang.Exception
 
 
 class carAdapter (val championList: MutableList<Champion>) :  RecyclerView.Adapter<carAdapter.CarViewHolder>() {
@@ -34,16 +36,21 @@ class carAdapter (val championList: MutableList<Champion>) :  RecyclerView.Adapt
         holder.prix.text = prix.toString()
 
         holder.btnLike.setOnClickListener {
-            AppDataBase.getDatabase(holder.itemView.context).championDao().insert(
-                Champion(
-                    position,
-                    R.drawable.kia_picanto,
-                    holder.nom.text.toString(),
-                    holder.dispo.text.toString(),
-                    80
+            try {
+                AppDataBase.getDatabase(holder.itemView.context).championDao().insert(
+                    Champion(
+                        position,
+                        R.drawable.kia_picanto,
+                        holder.nom.text.toString(),
+                        holder.dispo.text.toString(),
+                        80
 
+                    )
                 )
-            )
+            }
+            catch (ex: Exception){
+                Toast.makeText(holder.itemView.context, "Could not add the car to favorite !", Toast.LENGTH_SHORT).show()
+            }
 
         }
     }
