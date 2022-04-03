@@ -1,5 +1,6 @@
 package com.example.exam
 
+import android.app.AlertDialog
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -16,7 +17,7 @@ class favoriteAdapter (val championList: MutableList<Champion>) : RecyclerView.A
         viewType: Int
     ): favoriteViewHolder {
         val view = LayoutInflater.from(parent.context)
-            .inflate(R.layout.recycle_model, parent, false)
+            .inflate(R.layout.recycle_favorite, parent, false)
         return favoriteViewHolder(view)
     }
 
@@ -29,6 +30,21 @@ class favoriteAdapter (val championList: MutableList<Champion>) : RecyclerView.A
         holder.nom.text = name
         holder.dispo.text = dispo
         holder.prix.text = prix.toString()
+        holder.btn_delete.setOnClickListener {
+
+            AlertDialog.Builder(holder.itemView.context)
+                .setTitle("Delete from favorite")
+                .setMessage(holder.itemView.context.getString(R.string.deleteMessageUniv, championList[position].Nom))
+                .setPositiveButton("Yes"){ dialogInterface, which ->
+                    AppDataBase.getDatabase(holder.itemView.context).championDao().delete(championList[position])
+                    championList.removeAt(position)
+                    notifyDataSetChanged()
+
+                }.setNegativeButton("No"){dialogInterface, which ->
+                    dialogInterface.dismiss()
+                }.create().show()
+
+        }
     }
 
     override fun getItemCount(): Int = championList.size
