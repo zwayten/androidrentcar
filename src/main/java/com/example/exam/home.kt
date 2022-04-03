@@ -33,6 +33,7 @@ class home : AppCompatActivity() {
         }
         profile.setOnClickListener { supportFragmentManager.beginTransaction().replace(R.id.flfragment, profileFragment()).commit() }
 
+        favorite.setOnClickListener {  supportFragmentManager.beginTransaction().replace(R.id.flfragment, favoriteFragment()).commit() }
 
 
     }

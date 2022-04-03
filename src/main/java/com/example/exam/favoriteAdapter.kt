@@ -4,6 +4,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import android.widget.ImageButton
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
@@ -37,6 +38,7 @@ class favoriteAdapter (val championList: MutableList<Champion>) : RecyclerView.A
         val nom = itemView.findViewById<TextView>(R.id.Nom)
         val dispo = itemView.findViewById<TextView>(R.id.dispo)
         val prix = itemView.findViewById<TextView>(R.id.prix)
-        val btn_delete = itemView.findViewById<Button>(R.id.btnDelete)
+        val btn_delete = itemView.findViewById<ImageButton>(R.id.btnDelete)
+
     }
 }
