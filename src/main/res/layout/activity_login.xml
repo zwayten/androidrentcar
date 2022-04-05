@@ -37,6 +37,7 @@
             android:drawableStart="@drawable/ic_account"
             android:ems="10"
             android:hint="Username"
+            app:errorEnabled="true"
             android:inputType="textPersonName"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"

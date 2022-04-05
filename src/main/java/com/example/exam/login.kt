@@ -45,7 +45,6 @@ class login : AppCompatActivity() {
                 username.error="email required"
                 username.requestFocus()
                 return@setOnClickListener
-
             }
             if(pass.isEmpty()){
                 password.error="password required"

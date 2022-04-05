@@ -40,10 +40,10 @@ class carAdapter (val championList: MutableList<Champion>) :  RecyclerView.Adapt
                 AppDataBase.getDatabase(holder.itemView.context).championDao().insert(
                     Champion(
                         position,
-                        R.drawable.kia_picanto,
+                        championList[position].champPic,
                         holder.nom.text.toString(),
                         holder.dispo.text.toString(),
-                        80
+                        holder.prix.text.toString().toInt()
 
                     )
                 )
