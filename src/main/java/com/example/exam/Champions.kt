@@ -6,9 +6,9 @@ import androidx.room.PrimaryKey
 
 const val PICTURE="PICTURE"
 const val NAME="NAME"
-
 const val DISPO="DISPO"
 const val PRIX="PRIX"
+
 @Entity(tableName = "champions")
 data class Champion(
     @PrimaryKey(autoGenerate = true)

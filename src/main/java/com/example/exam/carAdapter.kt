@@ -1,6 +1,7 @@
 package com.example.exam
 
 
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -52,6 +53,18 @@ class carAdapter (val championList: MutableList<Champion>) :  RecyclerView.Adapt
                 Toast.makeText(holder.itemView.context, "Could not add the car to favorite !", Toast.LENGTH_SHORT).show()
             }
 
+        }
+
+
+        holder.itemView.setOnClickListener{
+            val intent = Intent(holder.itemView.context, Detail::class.java)
+            intent.apply {
+                putExtra(PICTURE, championList[position].champPic)
+                putExtra(NAME, holder.nom.text.toString())
+                putExtra(DISPO, holder.nom.text.toString())
+                putExtra(PRIX, championList[position].prix.toString())
+            }
+            holder.itemView.context.startActivity(intent)
         }
     }
 
