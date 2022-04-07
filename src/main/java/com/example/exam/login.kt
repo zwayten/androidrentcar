@@ -7,6 +7,7 @@ import android.widget.Button
 import android.widget.CheckBox
 import android.widget.EditText
 import androidx.appcompat.app.AppCompatActivity
+import com.google.android.material.textfield.TextInputLayout
 
 
 const val PREF_NAME = "LOGIN_PREF_CAR"
@@ -19,6 +20,8 @@ class login : AppCompatActivity() {
     private lateinit var buttonLogin: Button
     private lateinit var username: EditText
     private lateinit var password: EditText
+    lateinit var editTextuser1: TextInputLayout
+    lateinit var editTextuser2: TextInputLayout
     private lateinit var remember_me: CheckBox
     lateinit var mSharedPref: SharedPreferences
 
@@ -31,6 +34,8 @@ class login : AppCompatActivity() {
         password = findViewById(R.id.password);
         buttonLogin = findViewById(R.id.login);
         remember_me = findViewById(R.id.remember);
+        editTextuser2 = findViewById(R.id.txtLayoutpassword)
+        editTextuser1 = findViewById(R.id.txtLayoutLogin)
 
         mSharedPref = getSharedPreferences(PREF_NAME, MODE_PRIVATE);
 
@@ -41,17 +46,9 @@ class login : AppCompatActivity() {
         buttonLogin.setOnClickListener {
             val user = username.text.toString();
             val pass = password.text.toString()
-            if(user.isEmpty()){
-                username.error="email required"
-                username.requestFocus()
-                return@setOnClickListener
-            }
-            if(pass.isEmpty()){
-                password.error="password required"
-                password.requestFocus()
-                return@setOnClickListener
-            }
-            if (!pass.isEmpty() && !user.isEmpty() && remember_me.isChecked()){
+
+
+            if (validate()!! && remember_me.isChecked()){
                 mSharedPref.edit().apply{
                     putBoolean(IS_REMEMBRED, true)
                     putString(LOGIN, user)
@@ -59,7 +56,7 @@ class login : AppCompatActivity() {
                 }.apply()
                 navigate()
             }
-            if (!pass.isEmpty() && !user.isEmpty() && !remember_me.isChecked()){
+            if (validate()!! && !remember_me.isChecked()){
                 mSharedPref.edit().apply{
                     putBoolean(IS_REMEMBRED, false)
                     putString(LOGIN, user)
@@ -70,6 +67,23 @@ class login : AppCompatActivity() {
 
         }
 
+    }
+
+    private fun validate(): Boolean {
+        editTextuser1.error = null
+        editTextuser2.error = null
+
+        if (username.text!!.isEmpty()) {
+            editTextuser1.error = getString(R.string.mustNotBeEmpty)
+            return false
+        }
+
+        if (password.text!!.isEmpty()) {
+            editTextuser2.error = getString(R.string.mustNotBeEmpty)
+            return false
+        }
+
+        return true
     }
 
     private fun navigate(){
